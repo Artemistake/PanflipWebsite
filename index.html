@@ -3,27 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
   <title>Panflip Studio</title>
+
   <style>
-    /* === Reset === */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Carlito', sans-serif;
       background: #0f0f0f;
+      font-size: 20px;
       color: white;
+      overflow-x: hidden;
     }
 
-    /* === Header === */
+    /* ========== HEADER ========== */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px;
+      padding: 20px 30px;
       position: fixed;
       width: 100%;
       top: 0;
       background: rgba(0, 0, 0, 0.8);
       z-index: 10;
+      box-sizing: border-box;
+      backdrop-filter: blur(5px); 
     }
 
     .logo-link img {
@@ -34,7 +39,7 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 30px;
       margin: 0;
       padding: 0;
     }
@@ -46,13 +51,11 @@
       cursor: pointer;
     }
 
-    /* Hamburger menu */
     .hamburger {
       display: none;
       flex-direction: column;
       cursor: pointer;
       gap: 4px;
-      margin-left: 20px;
     }
 
     .hamburger span {
@@ -61,7 +64,7 @@
       background: white;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 500px) {
       nav ul {
         display: none;
         position: absolute;
@@ -81,7 +84,7 @@
       }
     }
 
-    /* === Sections === */
+    /* ========== SECTIONS ========== */
     .tab-section {
       display: none;
       opacity: 0;
@@ -89,40 +92,101 @@
       max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      min-height: calc(100vh - 70px);
     }
-
     .tab-section.active {
       display: block;
       opacity: 1;
     }
 
-    /* === Home Section === */
+    .tab-section {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      min-height: calc(100vh - 70px);
+    }
+
+    /* Fade-in */
+    .tab-section.active {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Fade-out */
+    .tab-section.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease;
+    }
+
+
+    /* HOME */
     #home {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding-top: 50px;
+      padding-bottom: 150px;
       text-align: center;
-      padding-top: 0;
     }
 
     #home img {
-      width: 200px;
-      height: auto;
+      width: 300px;
       margin-bottom: 20px;
     }
 
     #home h1 {
+      font-size: 40px;
+      max-width: 950px;
+      margin: 0 auto 50px auto;
+    }
+
+    /* Stack Order logo on home */
+    .home-game-logo {
+      width: 300px;
+      margin: 40px auto 20px auto;
+      display: block;
+    }
+
+    /* Embedded YouTube Trailer */
+    .video-frame {
+      margin: 20px auto 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .video-frame iframe {
+      width: 100%;
       max-width: 800px;
+      height: 450px;
+      border-radius: 10px;
+      border: none;
     }
 
-    /* Other sections pushed below header */
-    .tab-section:not(#home) {
-      margin-top: 70px; /* height of header */
+    /* GAME TAB */
+    .game-text {
+      text-align: center;
+      max-width: 900px;
+      margin: 20px auto;
+      line-height: 1.6;
     }
 
-    /* === Gallery === */
+    .game-logo {
+      display: block;
+      margin: 0 auto 20px auto;
+      width: 300px;
+      max-width: 80%;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -134,7 +198,7 @@
       border-radius: 10px;
     }
 
-    /* === Team Page === */
+    /* TEAM */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -157,15 +221,13 @@
       margin-bottom: 10px;
     }
 
-    /* === Contact Form === */
+    /* CONTACT */
     .contact-form {
+      max-width: 400px;
       display: flex;
       flex-direction: column;
       gap: 15px;
-      max-width: 400px;
-      margin-top: 20px;
     }
-
     .contact-form input,
     .contact-form textarea {
       padding: 10px;
@@ -174,7 +236,6 @@
       background: #222;
       color: white;
     }
-
     .contact-form button {
       padding: 12px;
       border: none;
@@ -185,95 +246,170 @@
       color: black;
     }
 
-    .contact-form button:hover {
-      background: #ffa447;
+    /* FOOTER */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 0;
+      background: rgba(0, 0, 0, 0.5); 
+      text-align: center;
+      z-index: 50;
+      backdrop-filter: blur(5px); 
     }
+
+    .socials img {
+      width: 25px;
+      margin: 0 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .socials img:hover {
+      filter: brightness(1.5);
+    }
+
+    footer p {
+      margin-top: 5px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    body {
+      padding-bottom: 20px; /* prevents footer overlapping content */
+    }
+
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header>
-    <a href="#home" class="logo-link" onclick="showTab('home')"><img src="logo_img.jpg" alt="Panflip Studio Logo"></a>
+    <a href="#home" class="logo-link" onclick="showTab('home')">
+      <img src="logo_typo.png" alt="Panflip Studio Logo">
+    </a>
+
     <div class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
+
     <nav>
       <ul id="menu">
-        <li><a href="#" onclick="showTab('game')">Our Game</a></li>
-        <li><a href="#" onclick="showTab('team')">Team</a></li>
-        <li><a href="#" onclick="showTab('contact')">Contact</a></li>
+        <li><a onclick="showTab('game')">Our Game</a></li>
+        <li><a onclick="showTab('team')">Team</a></li>
+        <li><a onclick="showTab('contact')">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- HOME SECTION -->
+  <!-- HOME -->
   <section id="home" class="tab-section active">
-    <img src="logo_img.jpg" alt="Panflip Studio Logo" />
-    <h1>We are a small french indie studio making narrative and mechanic heavy games for art lovers</h1>
-  </section>
+    <img src="logo_img.png" alt="Panflip Studio Logo" />
+    <h1>
+      We are a small french indie studio making narrative and mechanic heavy games for art lovers
+    </h1>
 
-  <!-- GAME SECTION -->
-  <section id="game" class="tab-section">
-    <h1>Stack Order</h1>
-    <p>Voici quelques images du jeu en développement :</p>
-    <div class="gallery">
-      <img src="image1.png" alt="Screenshot 1">
-      <img src="image2.png" alt="Screenshot 2">
-      <img src="image3.png" alt="Screenshot 3">
+    <img src="stackorderlogo.png" class="home-game-logo" alt="Stack Order">
+    <br>
+
+    <div class="video-frame">
+      <!-- Replace VIDEO_ID with your trailer -->
+      <iframe src="https://youtu.be/PasdPcqWmlM" allowfullscreen></iframe>
     </div>
   </section>
 
-  <!-- TEAM SECTION -->
+  <!-- GAME -->
+  <section id="game" class="tab-section">
+    <br>
+    <img src="stackorderlogo.png" alt="Stack Order Logo" class="game-logo">
+
+    <p class="game-text">
+      Stack Order is an indie game combining boss battles, deckbuilding, and roguelite elements, with a strong narrative focus.
+      <br><br>
+      Presented in a 2D comic-inspired art style, the player alternates between boss fights, exploration phases, dialogues with NPCs, and comic-style sequences that expand the story.
+      <br><br>
+      The core gameplay is built around a card-stacking system: players layer cards with different effects to create powerful combos and carefully planned attacks.
+    </p>
+
+    <div class="gallery">
+      <img src="stackscreen1.png">
+      <img src="stackscreen2.png">
+      <img src="stackscreen3.png">
+    </div>
+  </section>
+
+  <!-- TEAM -->
   <section id="team" class="tab-section">
-    <h1>L'équipe</h1>
-    <p>Présentation de l'équipe du studio Panflip :</p>
+    <h1>Meet our team!</h1>
+
     <div class="team-grid">
       <div class="team-member">
-        <img src="member1.png" alt="Membre 1">
-        <h3>Nom membre 1</h3>
-        <p>Rôle dans le studio</p>
+        <img src="Enz.png"><h3>Enz</h3><p>Game Designer / Developer</p>
       </div>
       <div class="team-member">
-        <img src="member2.png" alt="Membre 2">
-        <h3>Nom membre 2</h3>
-        <p>Rôle dans le studio</p>
+        <img src="Axl.png"><h3>Axl</h3><p>Art Director / 2D Artist</p>
       </div>
       <div class="team-member">
-        <img src="member3.png" alt="Membre 3">
-        <h3>Nom membre 3</h3>
-        <p>Rôle dans le studio</p>
+        <img src="Baz.png"><h3>Baz</h3><p>Sound Designer / Composer</p>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
+  <!-- CONTACT -->
   <section id="contact" class="tab-section">
-    <h1>Contact</h1>
-    <p>Vous pouvez nous écrire via ce formulaire :</p>
-    <!-- Formspree integration -->
-    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <label>Nom</label>
-      <input type="text" name="name" required>
-      <label>Email</label>
-      <input type="email" name="email" required>
-      <label>Message</label>
-      <textarea name="message" rows="5" required></textarea>
-      <button type="submit">Envoyer</button>
+    <h1>Contact us</h1>
+
+    <p>You can write to us directly:</p>
+
+    <form class="contact-form" action="mailto:YOUR_EMAIL_HERE" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+      <button type="submit">Send</button>
     </form>
   </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="socials">
+      <a href="" target="_blank"><img src="Insta.png"></a>
+      <a href="" target="_blank"><img src="Tiktok.png"></a>
+      <a href="" target="_blank"><img src="Youtube.png"></a>
+      <a href="" target="_blank"><img src="BlueSky.png"></a>
+      <a href="" target="_blank"><img src="Twitter.png"></a>
+    </div>
+  </footer>
 
   <script>
     function toggleMenu() {
       document.getElementById('menu').classList.toggle('open');
     }
 
-    function showTab(tabId) {
-      const sections = document.querySelectorAll('.tab-section');
-      sections.forEach(sec => sec.classList.remove('active'));
-      const activeSection = document.getElementById(tabId);
-      activeSection.classList.add('active');
-      // Scroll to top of section
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    function showTab(id) {
+      const target = document.getElementById(id);
+      const active = document.querySelector('.tab-section.active');
+
+      if (target === active) return;
+
+      // Fade out active tab
+      if (active) {
+        active.classList.remove('active');
+        active.classList.add('fade-out');
+      }
+
+      // Wait for fade-out before showing the next
+      setTimeout(() => {
+        if (active) active.classList.remove('fade-out');
+        target.classList.add('active');
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 500); // matches CSS transition
     }
+
   </script>
+
+
 </body>
 </html>
