@@ -22,9 +22,10 @@
       --text-muted: #b0b0b0;
       
       /* NEW ACCENT: Pastel Green */
-      --accent: #98ff98; 
-      --accent-glow: rgba(152, 255, 152, 0.2);
-      --accent-hover: #76e876;
+      --accent: #ffe6a0; 
+      --accent-glow: rgba(255, 247, 142, 0.123);
+      --accent-hover: #ffdc7d; 
+;
       
       --nav-height: 80px;
       --footer-height: 80px;
@@ -38,7 +39,7 @@
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-color);
       /* TUNED DOWN HALO: Subtler, darker green tint, pushed higher up */
-      background-image: radial-gradient(circle at 50% 0%, #1a281a 0%, #0f0f0f 55%);
+      background-image: radial-gradient(circle at 50% 0%, #28241a 0%, #0f0f0f 55%);
       color: var(--text-main);
       display: flex;
       flex-direction: column;
@@ -117,7 +118,7 @@
       padding-top: var(--nav-height);
       padding-bottom: var(--footer-height);
       width: 100%;
-      max-width: 1200px;
+      max-width: 1800px;
       margin: 0 auto;
       position: relative;
     }
@@ -209,10 +210,10 @@
     /* ========== GAME TAB ========== */
     .game-layout {
       text-align: center;
-      max-width: 900px;
+      max-width: 1800px;
       margin: 0 auto;
     }
-    .game-desc { font-size: 1.1rem; color: var(--text-muted); margin: 30px auto; max-width: 800px; }
+    .game-desc { font-size: 1.1rem; color: var(--text-muted); margin: 30px auto; max-width: 1800; }
     
     .gallery {
       display: grid;
@@ -267,6 +268,35 @@
     
     .team-member h3 { color: var(--accent); margin-bottom: 5px; }
     .team-member p { font-size: 0.9rem; color: var(--text-muted); }
+
+        .member-socials {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .member-socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .member-socials img {
+      width: 20px;  /* Size of the icons */
+      height: 20px;
+      border: none;
+      border-radius: 0;
+      margin: 0; /* Override previous img margins */
+      opacity: 0.5;
+      transition: var(--transition);
+    }
+
+    .member-socials a:hover img {
+      opacity: 1;
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 5px var(--accent));
+    }
 
     /* ========== CONTACT TAB ========== */
     .contact-wrapper {
@@ -399,20 +429,18 @@
         <div class="studio-side">
           <img src="logo_img.png" alt="Icon">
           <h1>
-            We craft <span class="highlight">narrative</span> & <br>
-            <span class="highlight">mechanic heavy</span> games <br>
-            for art lovers.
+            We are a small french <span class="highlight">indie</span> studio doing <span class="highlight">handcrafted</span> games for <span class="highlight">art-minded</span> players.
           </h1>
-          <p style="color: var(--text-muted);">Small French indie studio.</p>
         </div>
 
         <!-- Right: Game Summary (Centered) -->
         <div class="game-side">
           <span class="current-project-badge">Our Current Project</span>
+          <p></p>
           <img src="stackorderlogo.png" alt="Stack Order" class="game-logo-home">
-          
+          <p></p>
           <div class="video-frame">
-            <iframe src="https://www.youtube.com/embed/PasdPcqWmlM" allowfullscreen></iframe>
+            <iframe src="https://youtu.be/DSVlW2L8rkM" allowfullscreen></iframe>
           </div>
           
           <p style="margin-top:15px; color: #ddd; font-size: 0.9rem;">
@@ -431,12 +459,12 @@
       <div class="game-layout">
         <img src="stackorderlogo.png" alt="Stack Order" style="width: 250px; margin-bottom:20px;">
         
-        <h2>Boss Battles. Deckbuilding. Roguelite.</h2>
+        <h2>Boss Battles,  Deckbuilding,  Narration.</h2>
         
         <p class="game-desc">
-          Presented in a 2D comic-inspired art style, the player alternates between boss fights, exploration phases, dialogues with NPCs, and comic-style sequences. 
+          Presented in a 2D comic-inspired art style, the player alternates between boss fights, dialogues with NPCs, and comic-style sequences. 
           <br><br>
-          Layer cards with different effects to create powerful combos and carefully planned attacks.
+          Layer cards with different effects to outsmart bosses and create powerful combos by carefully planning your attacks attacks.
         </p>
 
         <div class="gallery">
@@ -447,26 +475,49 @@
       </div>
     </section>
 
-    <!-- TEAM TAB -->
+<!-- TEAM TAB -->
     <section id="team" class="tab-section">
-      <h1 style="text-align: center;">Meet the Team</h1>
+      <h1 style="text-align: center;">Our Team !</h1>
       
       <div class="team-grid">
-        <div class="team-member">
-          <img src="Enz.png" alt="Enz">
-          <h3>Enz</h3>
-          <p>Game Designer / Dev</p>
-        </div>
+        
+        <!-- Member 2: Axl -->
         <div class="team-member">
           <img src="Axl.png" alt="Axl">
-          <h3>Axl</h3>
+          <h3>Axel NOWAK</h3>
           <p>Art Director / 2D Artist</p>
+          
+          <div class="member-socials">
+            <a href="#" target="https://www.instagram.com/maxelhi/" title="Instagram"><img src="Insta.png" alt="IG"></a>
+          </div>
         </div>
+
+        <!-- Member 1: Enz -->
+        <div class="team-member">
+          <img src="Enz.png" alt="Enz">
+          <h3>Enzo SEURRE</h3>
+          <p>Game Designer / Developer</p>
+          
+          <div class="member-socials">
+            <a href="#" target="https://enzoseurre.com/" title="Website"><img src="Website.png" alt="Web"></a>
+            <a href="#" target="https://www.linkedin.com/in/enzo-seurre-gd/" title="LinkedIn"><img src="Linkedin.png" alt="In"></a>
+            <a href="#" target="https://www.instagram.com/enzo.srr/" title="Instagram"><img src="Insta.png" alt="IG"></a>
+          </div>
+        </div>
+
+        <!-- Member 3: Baz -->
         <div class="team-member">
           <img src="Baz.png" alt="Baz">
-          <h3>Baz</h3>
+          <h3>Basile BRUN</h3>
           <p>Sound Designer / Composer</p>
+          
+          <div class="member-socials">
+            <a href="#" target="https://poesie-soft.xyz/" title="Website"><img src="Website.png" alt="Web"></a>
+            <a href="#" target="https://www.linkedin.com/in/basile-brun-76a5732ba/" title="LinkedIn"><img src="Linkedin.png" alt="In"></a>
+            <a href="#" target="https://www.instagram.com/chap0ng/" title="Instagram"><img src="Insta.png" alt="IG"></a>
+          </div>
         </div>
+
       </div>
     </section>
 
