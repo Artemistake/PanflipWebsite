@@ -25,7 +25,7 @@
       --accent: #ffe6a0; 
       --accent-glow: rgba(255, 247, 142, 0.123);
       --accent-hover: #ffdc7d; 
-;
+
       
       --nav-height: 80px;
       --footer-height: 80px;
@@ -207,6 +207,16 @@
     
     .video-frame iframe { width: 100%; height: 100%; border: none; }
 
+    /* Button Row for Homepage */
+    .button-row {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin-top: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     /* ========== GAME TAB ========== */
     .game-layout {
       text-align: center;
@@ -348,6 +358,16 @@
       box-shadow: 0 0 20px var(--accent-glow);
     }
 
+    /* Special style for Discord button */
+    .discord-btn {
+      background: #5865F2; /* Discord Brand Color */
+      color: white;
+    }
+    .discord-btn:hover {
+      background: #4752c4;
+      box-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
+    }
+
     /* ========== FOOTER ========== */
     footer {
       height: var(--footer-height);
@@ -393,6 +413,10 @@
         border-bottom: 1px solid #333;
       }
       nav ul.open { display: flex; }
+      
+      .button-row {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -439,16 +463,29 @@
           <p></p>
           <img src="stackorderlogo.png" alt="Stack Order" class="game-logo-home">
           <p></p>
+          
+          <!-- FIXED YOUTUBE EMBED -->
           <div class="video-frame">
-            <iframe src="https://youtu.be/DSVlW2L8rkM" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/DSVlW2L8rkM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           
           <p style="margin-top:15px; color: #ddd; font-size: 0.9rem;">
             A narrative roguelite deckbuilder with comic-book style visuals.
           </p>
-          <button onclick="showTab('game')" style="margin-top:10px; font-size: 0.8rem; padding: 10px 20px;">
-            See More details
-          </button>
+
+          <!-- BUTTON ROW -->
+          <div class="button-row">
+            <!-- Discord Button (Left) -->
+            <button class="discord-btn" onclick="window.open('https://discord.gg/tbtSRwbyfc', '_blank')" style="font-size: 0.8rem; padding: 10px 20px;">
+              Join our Discord to follow the development and access playtest
+            </button>
+            
+            <!-- Existing Game Button (Right) -->
+            <button onclick="showTab('game')" style="font-size: 0.8rem; padding: 10px 20px;">
+              See More details
+            </button>
+          </div>
+
         </div>
 
       </div>
