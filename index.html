@@ -4,55 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- OPTIMIZED TITLE: Includes Studio Name + Main Game + Genre Keywords -->
   <title>Panflip Studio | Indie Devs | Creator of Stack Order</title>
   
-  <!-- OPTIMIZED DESCRIPTION: Keywords included naturally (Roguelite, Deckbuilder, French, Indie) -->
   <meta name="description" content="Panflip Studio is a French indie game studio creating handcrafted, narrative-heavy games. Discover Stack Order, our comic-style roguelite deckbuilder.">
-  
-  <!-- KEYWORDS (Optional, but helps slightly): -->
   <meta name="keywords" content="Panflip Studio, Stack Order, Indie Game, Roguelite, Deckbuilder, French Studio, Video Games">
-
-  <!-- CANONICAL URL: Tells Google this is the master copy of the page -->
   <link rel="canonical" href="https://panflipstudio.com/" />
-  
   <link rel="icon" href="logo_img.png" type="image/png" />
   
-  <!-- OPEN GRAPH (For Discord, Twitter/X, LinkedIn Previews) -->
-  <!-- This makes your link look good when shared, which drives traffic -->
+  <!-- OPEN GRAPH -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://panflipstudio.com/" />
   <meta property="og:title" content="Panflip Studio - Creators of Stack Order" />
-  <meta property="og:description" content="We are a French indie studio crafting narrative & mechanic heavy games. Check out our latest project." />
+  <meta property="og:description" content="We are a French indie studio crafting narrative & mechanic heavy games." />
   <meta property="og:image" content="https://panflipstudio.com/StackCover.png" />
   
-  <!-- TWITTER CARD -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Panflip Studio | Stack Order">
   <meta name="twitter:description" content="French indie studio working on the narrative roguelite Stack Order.">
   <meta name="twitter:image" content="https://panflipstudio.com/StackCover.png">
 
-  <!-- Fonts & CSS (Keep your existing links here) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      /* Palette */
       --bg-color: #0f0f0f;
       --card-bg: #181818;
       --text-main: #ffffff;
       --text-muted: #b0b0b0;
       
-      /* NEW ACCENT: Pastel Green */
+      /* ACCENT: Pastel Green */
       --accent: #ffe6a0; 
       --accent-glow: rgba(255, 247, 142, 0.123);
       --accent-hover: #ffdc7d; 
 
-      
       --nav-height: 80px;
-      --footer-height: 80px;
+      --footer-height: 70px; 
       --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
@@ -62,7 +51,6 @@
       margin: 0;
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-color);
-      /* TUNED DOWN HALO: Subtler, darker green tint, pushed higher up */
       background-image: radial-gradient(circle at 50% 0%, #28241a 0%, #0f0f0f 55%);
       color: var(--text-main);
       display: flex;
@@ -71,9 +59,7 @@
       overflow-x: hidden;
     }
 
-    /* TYPOGRAPHY */
     h1, h2, h3 { font-family: 'Outfit', sans-serif; color: white; margin: 0; }
-    
     a { text-decoration: none; color: inherit; transition: var(--transition); }
 
     /* ========== HEADER ========== */
@@ -87,8 +73,9 @@
       width: 100%;
       top: 0;
       z-index: 1000;
-      background: rgba(15, 15, 15, 0.8);
+      background: rgba(15, 15, 15, 0.85);
       backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
@@ -118,7 +105,6 @@
       text-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -137,34 +123,36 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
       padding-top: var(--nav-height);
-      padding-bottom: var(--footer-height);
+      /* Extra padding so content isn't hidden behind sticky footer */
+      padding-bottom: calc(var(--footer-height) + 40px);
       width: 100%;
-      max-width: 1800px;
-      margin: 0 auto;
       position: relative;
     }
 
-    /* TABS */
     .tab-section {
       display: none;
       width: 100%;
-      padding: 20px;
       animation: fadeUp 0.6s ease forwards;
     }
-
-    .tab-section.active {
-      display: block;
-    }
+    .tab-section.active { display: block; }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ========== HOME LAYOUT (SPLIT VIEW) ========== */
+    /* ========== HOME LAYOUT ========== */
+    .home-wrapper {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: calc(100vh - 200px); 
+    }
+
     .home-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -173,51 +161,35 @@
       width: 100%;
     }
 
-    /* Left Side: Studio Identity */
-    .studio-side {
-      text-align: center; /* CENTERED */
-      border-right: 1px solid rgba(255,255,255,0.1);
-      padding-right: 60px;
+    .studio-side, .game-side {
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
+    }
+
+    .studio-side {
+      border-right: 1px solid rgba(255,255,255,0.1);
+      padding-right: 60px;
     }
 
     .studio-side img { width: 180px; margin-bottom: 20px; }
-    
-    .studio-side h1 {
-      font-size: 2.5rem;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    
+    .studio-side h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 20px; }
     .highlight { color: var(--accent); }
-
-    /* Right Side: Game Showcase */
-    .game-side {
-      text-align: center; /* CENTERED */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
 
     .current-project-badge {
       display: inline-block;
       font-size: 0.75rem;
       font-weight: 800;
       background: var(--accent);
-      color: #0f0f0f; /* Dark text on pastel green */
+      color: #0f0f0f;
       padding: 5px 10px;
       border-radius: 4px;
       margin-bottom: 15px;
       text-transform: uppercase;
     }
 
-    .game-logo-home { 
-      width: 220px; 
-      display: block; 
-      margin: 0 auto 15px auto; 
-    }
+    .game-logo-home { width: 220px; display: block; margin: 0 auto 15px auto; }
 
     .video-frame {
       width: 100%;
@@ -226,12 +198,10 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border: 1px solid rgba(152, 255, 152, 0.2); /* Green border */
+      border: 1px solid rgba(152, 255, 152, 0.2);
     }
-    
     .video-frame iframe { width: 100%; height: 100%; border: none; }
 
-    /* Button Row for Homepage */
     .button-row {
       display: flex;
       flex-direction: row;
@@ -242,33 +212,112 @@
     }
 
     /* ========== GAME TAB ========== */
-    .game-layout {
+    .game-hero {
       text-align: center;
-      max-width: 1800px;
+      padding: 60px 20px;
+      max-width: 1200px;
       margin: 0 auto;
     }
-    .game-desc { font-size: 1.1rem; color: var(--text-muted); margin: 30px auto; max-width: 1800; }
-    
-    .gallery {
+    .game-hero-logo { width: 450px; max-width: 80%; margin-bottom: 20px; }
+    .game-tagline { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 40px; }
+
+    .game-feature-section {
+      max-width: 1400px;
+      margin: 0 auto 100px auto;
+      padding: 0 40px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
     }
-    .gallery img {
+
+    .game-feature-section.reverse .text-box { order: 2; }
+    .game-feature-section.reverse .img-box { order: 1; }
+
+    .text-box h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #fff, var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .text-box p { font-size: 1.1rem; line-height: 1.6; color: #ccc; }
+
+    .img-box img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
+    }
+    .img-box:hover img { transform: scale(1.02); border-color: var(--accent); }
+
+    .parallax-strip {
+      width: 100%;
+      height: 400px;
+      background-image: url('border.png');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 80px 0;
+    }
+    .parallax-strip::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    .parallax-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 20px;
+    }
+    .parallax-content h2 {
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      text-shadow: 0 0 20px rgba(0,0,0,0.8);
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto 80px auto;
+      padding: 0 20px;
+    }
+    .gallery-grid img {
       width: 100%;
       border-radius: 8px;
-      transition: var(--transition);
       opacity: 0.8;
-      border: 1px solid transparent;
+      transition: var(--transition);
+      cursor: pointer;
     }
-    .gallery img:hover {
-      opacity: 1;
-      transform: scale(1.02);
-      border-color: var(--accent);
+    .gallery-grid img:hover { opacity: 1; transform: scale(1.03); }
+
+    .devlog-video {
+      max-width: 700px;  
+      margin: 0 auto;     
     }
 
     /* ========== TEAM TAB ========== */
+    .team-container { max-width: 1400px; margin: 0 auto; padding: 40px; }
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -284,13 +333,11 @@
       border: 1px solid rgba(255,255,255,0.05);
       transition: var(--transition);
     }
-
     .team-member:hover {
       transform: translateY(-10px);
       border-color: var(--accent);
       box-shadow: 0 10px 30px rgba(152, 255, 152, 0.1);
     }
-
     .team-member img {
       width: 120px;
       height: 120px;
@@ -299,52 +346,22 @@
       margin-bottom: 15px;
       border: 2px solid var(--accent);
     }
-    
     .team-member h3 { color: var(--accent); margin-bottom: 5px; }
     .team-member p { font-size: 0.9rem; color: var(--text-muted); }
 
-        .member-socials {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .member-socials a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .member-socials img {
-      width: 20px;  /* Size of the icons */
-      height: 20px;
-      border: none;
-      border-radius: 0;
-      margin: 0; /* Override previous img margins */
-      opacity: 0.5;
-      transition: var(--transition);
-    }
-
-    .member-socials a:hover img {
-      opacity: 1;
-      transform: scale(1.2);
-      filter: drop-shadow(0 0 5px var(--accent));
-    }
+    .member-socials { margin-top: 20px; display: flex; justify-content: center; gap: 15px; }
+    .member-socials img { width: 20px; height: 20px; opacity: 0.5; transition: var(--transition); }
+    .member-socials a:hover img { opacity: 1; transform: scale(1.2); filter: drop-shadow(0 0 5px var(--accent)); }
 
     /* ========== CONTACT TAB ========== */
     .contact-wrapper {
       max-width: 500px;
-      margin: 0 auto;
+      margin: 40px auto;
       text-align: center;
+      padding: 0 20px;
     }
 
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 30px;
-    }
+    .contact-form { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
 
     input, textarea {
       width: 100%;
@@ -356,12 +373,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 1rem;
     }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      background: #222;
-    }
+    input:focus, textarea:focus { outline: none; border-color: var(--accent); background: #222; }
 
     button {
       padding: 15px;
@@ -376,30 +388,26 @@
       letter-spacing: 1px;
       transition: var(--transition);
     }
+    button:hover { background: var(--accent-hover); box-shadow: 0 0 20px var(--accent-glow); }
 
-    button:hover {
-      background: var(--accent-hover);
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
+    .discord-btn { background: #5865F2; color: white; }
+    .discord-btn:hover { background: #4752c4; box-shadow: 0 0 20px rgba(88, 101, 242, 0.4); }
 
-    /* Special style for Discord button */
-    .discord-btn {
-      background: #5865F2; /* Discord Brand Color */
-      color: white;
-    }
-    .discord-btn:hover {
-      background: #4752c4;
-      box-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
-    }
-
-    /* ========== FOOTER ========== */
+    /* ========== STICKY FOOTER ========== */
     footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       height: var(--footer-height);
       display: flex;
       justify-content: center;
       align-items: center;
-      background: rgba(15, 15, 15, 0.9);
-      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(15, 15, 15, 0.6); 
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      z-index: 1000;
       font-size: 0.9rem;
     }
     
@@ -409,21 +417,37 @@
 
     /* ========== RESPONSIVE ========== */
     @media (max-width: 900px) {
-      .home-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .studio-side {
-        border-right: none;
-        padding-right: 0;
-        padding-bottom: 30px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-      }
+      .home-grid { grid-template-columns: 1fr; gap: 40px; }
+      .studio-side { border-right: none; padding-right: 0; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); }
       h1 { font-size: 2rem; }
+      
+      .game-feature-section { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .game-feature-section.reverse .text-box { order: 1; }
+      .game-feature-section.reverse .img-box { order: 2; }
+      .parallax-strip { background-attachment: scroll; }
+      .parallax-content h2 { font-size: 2rem; }
     }
 
     @media (max-width: 600px) {
-      .hamburger { display: flex; }
+      /* Adjust Header Padding for Mobile */
+      header {
+        padding: 0 20px; 
+      }
+
+      /* Fix Hamburger Position: Remove Nav from Flow */
+      nav {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        pointer-events: none; /* Let clicks pass through to header */
+      }
+      
+      .hamburger {
+        display: flex;
+        z-index: 1002; /* Top layer */
+      }
+
       nav ul {
         display: none;
         position: absolute;
@@ -435,12 +459,11 @@
         padding: 20px;
         text-align: center;
         border-bottom: 1px solid #333;
+        pointer-events: auto; /* Re-enable clicks on the menu */
       }
-      nav ul.open { display: flex; }
       
-      .button-row {
-        flex-direction: column;
-      }
+      nav ul.open { display: flex; }
+      .button-row { flex-direction: column; }
     }
   </style>
 </head>
@@ -453,6 +476,7 @@
       <img src="logo_typo.png" alt="Panflip Studio">
     </a>
 
+    <!-- Hamburger stays in flow, Nav is absolute on mobile -->
     <div class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -469,121 +493,161 @@
   <!-- MAIN STAGE -->
   <main>
 
-    <!-- HOME TAB (Split View) -->
+    <!-- HOME TAB -->
     <section id="home" class="tab-section active">
-      <div class="home-grid">
-        
-        <!-- Left: Studio Identity (Centered) -->
-        <div class="studio-side">
-          <img src="logo_img.png" alt="Icon">
-          <h1>
-            We are a small french <span class="highlight">indie</span> studio doing <span class="highlight">handcrafted</span> games for <span class="highlight">art-minded</span> players.
-          </h1>
-          <p></p>
-
-          <!-- BUTTON ROW -->
-          <div class="button-row">
-            <!-- Discord Button (Left) -->
-            <button class="discord-btn" onclick="window.open('https://discord.gg/tbtSRwbyfc', '_blank')" style="font-size: 0.8rem; padding: 10px 20px;">
-              Join our Discord to follow the studio life and access playtest for our games
-            </button>
-          </div>
-
-        </div>
-
-        <!-- Right: Game Summary (Centered) -->
-        <div class="game-side">
-          <span class="current-project-badge">Our Current Project</span>
-          <p></p>
-          <img src="stackorderlogo.png" alt="Stack Order" class="game-logo-home">
-          <p></p>
+      <div class="home-wrapper">
+        <div class="home-grid">
           
-          <!-- FIXED YOUTUBE EMBED -->
-          <div class="video-frame">
-            <iframe src="https://www.youtube.com/embed/DSVlW2L8rkM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-          
-          <p style="margin-top:15px; color: #ddd; font-size: 0.9rem;">
-            A narrative roguelite deckbuilder with comic-book style visuals.
-          </p>
-
-          <!-- BUTTON ROW -->
-          <div class="button-row">            
-            <!-- Existing Game Button (Right) -->
-            <button onclick="showTab('game')" style="font-size: 0.8rem; padding: 10px 20px;">
-              See More details
-            </button>
+          <div class="studio-side">
+            <img src="logo_img.png" alt="Icon">
+            <h1>
+              We are a small french <span class="highlight">indie</span> studio doing <span class="highlight">handcrafted</span> games for <span class="highlight">art-minded</span> players.
+            </h1>
+            <div class="button-row">
+              <button class="discord-btn" onclick="window.open('https://discord.gg/tbtSRwbyfc', '_blank')" style="font-size: 0.8rem; padding: 10px 20px;">
+                Join our Discord
+              </button>
+            </div>
           </div>
 
+          <div class="game-side">
+            <span class="current-project-badge">Our Current Project</span>
+            <img src="stackorderlogo.png" alt="Stack Order" class="game-logo-home">
+            
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/DSVlW2L8rkM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            
+            <p style="margin-top:15px; color: #ddd; font-size: 0.9rem;">
+              A narrative roguelite deckbuilder with comic-book style visuals.
+            </p>
+
+            <div class="button-row">            
+              <button onclick="showTab('game')" style="font-size: 0.8rem; padding: 10px 20px;">
+                Discover the Game
+              </button>
+            </div>
+          </div>
         </div>
-
       </div>
     </section>
 
     <!-- GAME TAB -->
     <section id="game" class="tab-section">
-      <div class="game-layout">
-        <img src="stackorderlogo.png" alt="Stack Order" style="width: 250px; margin-bottom:20px;">
-        
-        <h2>Boss Battles,  Deckbuilding,  Narration.</h2>
-        
-        <p class="game-desc">
-          Presented in a 2D comic-inspired art style, the player alternates between boss fights, dialogues with NPCs, and comic-style sequences. 
-          <br><br>
-          Layer cards with different effects to outsmart bosses and create powerful combos by carefully planning your attacks attacks.
-        </p>
+      
+      <div class="game-hero scroll-reveal">
+        <img src="stackorderlogo.png" alt="Stack Order" class="game-hero-logo">
+        <p class="game-tagline">Master the Stacks & Change the Storyline.</p>
+      </div>
 
-        <div class="gallery">
-          <img src="stackscreen1.png" alt="Stack Order Gameplay - Card Battle Interface">
-          <img src="stackscreen2.png" alt="Stack Order Overworld Comic Book Style">
-          <img src="stackscreen3.png" alt="Stack Order Comic Book Style Narrative Scene">
+      <div class="game-feature-section scroll-reveal">
+        <div class="text-box">
+          <h2>Strategic Deckbuilding</h2>
+          <p>
+            Stack Order isn't just about playing cards, it's about layering them. 
+            Manipulate the order of operations and craft synergies inside your deck to create devastating combos. 
+            Every turn is a puzzle against bosses attacks where your positioning matters as much as your power.
+            <br><br>
+            <span class="highlight">Synergy is key.</span> Combine strong effects and anticipate the outcomes to break through enemy defenses.
+          </p>
         </div>
+        <div class="img-box">
+          <img src="stackscreen_stacks.png" alt="Card Battle Interface">
+        </div>
+      </div>
+
+      <div class="parallax-strip">
+        <div class="parallax-content scroll-reveal">
+          <h2>A Living Comic Book Unveils</h2>
+        </div>
+      </div>
+
+      <div class="game-feature-section reverse scroll-reveal">
+        <div class="text-box">
+          <h2>A Colorful Narrative Story</h2>
+          <p>
+            Dive into a 2D comic-inspired world where <span class="highlight">the story unfolds panel by panel.</span>
+            Between high-stakes boss battles, navigate through a deep and original setting.
+            <br><br>
+            Throughout your journey, you will encounter various friendly faces <span class="highlight">that can alter the deck you bring into battle.</span>
+          </p>
+        </div>
+        <div class="img-box">
+          <img src="stackscreen_marchand.png" alt="Narrative Scene">
+        </div>
+      </div>
+
+      <div class="game-feature-section scroll-reveal">
+        <div class="text-box">
+          <h2>Clever Boss Battles</h2>
+          <p>
+            In Stack Order, each fight is designed to make you feel its intensity.
+            You'll only face off against uniquely designed bosses, each with their own set of mechanics and personality.            
+            <br><br>
+            <span class="highlight">Learn their patterns, adapt your deck, and strike when their guard is down.</span>
+          </p>
+        </div>
+        <div class="img-box">
+          <img src="stackscreen_attack.png" alt="Boss Attack">
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-bottom: 20px;" class="scroll-reveal">
+        <h2>Screenshots</h2>
+      </div>
+      <div class="gallery-grid scroll-reveal">
+        <img src="stackbird.png" alt="Versus Bird Boss">
+        <img src="stackdeck.png" alt="Decking Machine">
+        <img src="stackknight.png" alt="In Front of Corrupted Knight">
+      </div>
+
+      <div style="text-align: center; margin-bottom: 20px;" class="scroll-reveal">
+        <h2>Follow our Devlog serie about the game:</h2>
+      </div>
+      
+      <div class="video-frame devlog-video">
+        <iframe src="https://youtu.be/DSVlW2L8rkM?si=1NwXAtBVTYfGthif" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </section>
 
-<!-- TEAM TAB -->
+    <!-- TEAM TAB -->
     <section id="team" class="tab-section">
-      <h1 style="text-align: center;">Our Team !</h1>
-      
-      <div class="team-grid">
-        
-        <!-- Member 2: Axl -->
-        <div class="team-member">
-          <img src="Axl.png" alt="Axl">
-          <h3>Axel NOWAK</h3>
-          <p>Art Director / 2D Artist</p>
+      <div class="team-container">
+        <h1 style="text-align: center;">Our Team !</h1>
+        <div class="team-grid">
           
-          <div class="member-socials">
-            <a href="https://www.instagram.com/maxelhi/" target="https://www.instagram.com/maxelhi/" title="Instagram"><img src="Insta.png" alt="IG"></a>
+          <div class="team-member">
+            <img src="Axl.png" alt="Axl">
+            <h3>Axel NOWAK</h3>
+            <p>Art Director / 2D Artist</p>
+            <div class="member-socials">
+              <a href="https://www.instagram.com/maxelhi/" target="_blank"><img src="Insta.png" alt="IG"></a>
+            </div>
           </div>
-        </div>
 
-        <!-- Member 1: Enz -->
-        <div class="team-member">
-          <img src="Enz.png" alt="Enz">
-          <h3>Enzo SEURRE</h3>
-          <p>Game Designer / Developer</p>
-          
-          <div class="member-socials">
-            <a href="https://enzoseurre.com/" target="https://enzoseurre.com/" title="Website"><img src="Website.png" alt="Web"></a>
-            <a href="https://www.linkedin.com/in/enzo-seurre-gd/" target="https://www.linkedin.com/in/enzo-seurre-gd/" title="LinkedIn"><img src="Linkedin.png" alt="In"></a>
-            <a href="https://www.instagram.com/enzo.srr/" target="https://www.instagram.com/enzo.srr/" title="Instagram"><img src="Insta.png" alt="IG"></a>
+          <div class="team-member">
+            <img src="Enz.png" alt="Enz">
+            <h3>Enzo SEURRE</h3>
+            <p>Game Designer / Developer</p>
+            <div class="member-socials">
+              <a href="https://enzoseurre.com/" target="_blank"><img src="Website.png" alt="Web"></a>
+              <a href="https://www.linkedin.com/in/enzo-seurre-gd/" target="_blank"><img src="Linkedin.png" alt="In"></a>
+              <a href="https://www.instagram.com/enzo.srr/" target="_blank"><img src="Insta.png" alt="IG"></a>
+            </div>
           </div>
-        </div>
 
-        <!-- Member 3: Baz -->
-        <div class="team-member">
-          <img src="Baz.png" alt="Baz">
-          <h3>Basile BRUN</h3>
-          <p>Sound Designer / Composer</p>
-          
-          <div class="member-socials">
-            <a href="https://poesie-soft.xyz/" target="https://poesie-soft.xyz/" title="Website"><img src="Website.png" alt="Web"></a>
-            <a href="https://www.linkedin.com/in/basile-brun-76a5732ba/" target="https://www.linkedin.com/in/basile-brun-76a5732ba/" title="LinkedIn"><img src="Linkedin.png" alt="In"></a>
-            <a href="https://www.instagram.com/chap0ng/" target="https://www.instagram.com/chap0ng/" title="Instagram"><img src="Insta.png" alt="IG"></a>
+          <div class="team-member">
+            <img src="Baz.png" alt="Baz">
+            <h3>Basile BRUN</h3>
+            <p>Sound Designer / Composer</p>
+            <div class="member-socials">
+              <a href="https://poesie-soft.xyz/" target="_blank"><img src="Website.png" alt="Web"></a>
+              <a href="https://www.linkedin.com/in/basile-brun-76a5732ba/" target="_blank"><img src="Linkedin.png" alt="In"></a>
+              <a href="https://www.instagram.com/chap0ng/" target="_blank"><img src="Insta.png" alt="IG"></a>
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
 
@@ -593,11 +657,10 @@
         <h1>Contact Us</h1>
         <p style="color: var(--text-muted);">We reply to every email.</p>
 
-        <!-- Form now handled by Javascript for clean mailto -->
         <form class="contact-form" onsubmit="sendMail(event)">
           <input type="text" id="c-name" name="name" placeholder="Your Name" required>
           <input type="email" id="c-email" name="email" placeholder="Your Email" required>
-          <textarea id="c-msg" name="message" rows="5" placeholder="How can we help?" required></textarea>
+          <textarea id="c-msg" name="message" rows="5" placeholder="Whatever you want to tell us!" required></textarea>
           <button type="submit">Send Message</button>
         </form>
       </div>
@@ -605,9 +668,10 @@
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (STICKY) -->
   <footer>
     <div class="socials">
+      <a href="https://discord.gg/tbtSRwbyfc" target="_blank"><img src="Discord.png" alt="Discord"></a>
       <a href="https://www.instagram.com/panflip.studio/" target="_blank"><img src="Insta.png" alt="IG"></a>
       <a href="https://www.tiktok.com/@panflip.studio" target="_blank"><img src="Tiktok.png" alt="TT"></a>
       <a href="https://www.youtube.com/channel/UCkNpxjvf5o-mxSFRd9utpmQ" target="_blank"><img src="Youtube.png" alt="YT"></a>
@@ -625,32 +689,51 @@
       document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
       document.querySelectorAll('nav a').forEach(link => link.classList.remove('active-link'));
 
-      document.getElementById(id).classList.add('active');
+      const activeSection = document.getElementById(id);
+      activeSection.classList.add('active');
       
       if(id !== 'home') {
         const navLink = document.getElementById('nav-' + id);
         if(navLink) navLink.classList.add('active-link');
       }
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      
+      setTimeout(handleScrollAnimations, 100);
+
       document.getElementById('menu').classList.remove('open');
     }
 
-    // NEW FUNCTION: Handles proper email formatting
     function sendMail(e) {
       e.preventDefault();
-      
       const name = document.getElementById('c-name').value;
       const email = document.getElementById('c-email').value;
       const msg = document.getElementById('c-msg').value;
-
-      // Construct a clean body
       const subject = "Contact from Panflip Studio Website";
       const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`;
-
-      // Open default mail client
       window.location.href = `mailto:panflip.studio@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    function handleScrollAnimations() {
+      const elements = document.querySelectorAll('.scroll-reveal');
+      elements.forEach(el => observer.observe(el));
+    }
+
+    document.addEventListener('DOMContentLoaded', handleScrollAnimations);
   </script>
 
 </body>
