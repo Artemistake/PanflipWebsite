@@ -466,6 +466,48 @@
       .button-row { flex-direction: column; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Panflip Studio",
+    "url": "https://panflipstudio.com/",
+    "logo": "https://panflipstudio.com/logo_img.png",
+    "sameAs": [
+      "https://x.com/PanflipStudio",
+      "https://www.instagram.com/panflip.studio/",
+      "https://store.steampowered.com/developer/panflipstudio"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "panflip.studio@gmail.com",
+      "contactType": "customer service"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Stack Order",
+    "description": "A comic-style roguelite deckbuilder where you manipulate the order of operations.",
+    "genre": ["Roguelite", "Deckbuilder", "Strategy"],
+    "author": {
+      "@type": "Organization",
+      "name": "Panflip Studio"
+    },
+    "image": "https://panflipstudio.com/StackCover.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/PreOrder",
+      "url": "https://store.steampowered.com/app/4338750/Stack_Order/"
+    }
+  }
+  </script>
 </head>
 
 <body>
@@ -500,9 +542,11 @@
           
           <div class="studio-side">
             <img src="logo_img.png" alt="Icon">
-            <h1>
-              We are a small french <span class="highlight">indie</span> studio doing <span class="highlight">handcrafted</span> games for <span class="highlight">art-minded</span> players.
-            </h1>
+            <!-- SEO OPTIMIZED H1 -->
+            <h1>Panflip Studio</h1> 
+            <h2>
+              We are a French <span class="highlight">indie game studio</span> creating handcrafted experiences.
+            </h2>
             <div class="button-row">
               <button class="discord-btn" onclick="window.open('https://discord.gg/tbtSRwbyfc', '_blank')" style="font-size: 0.8rem; padding: 10px 20px;">
                 Join our Discord
@@ -707,7 +751,22 @@
       setTimeout(handleScrollAnimations, 100);
 
       document.getElementById('menu').classList.remove('open');
+
+      history.pushState(null, null, '#' + id); 
     }
+
+        // Add this to handle browser "Back" button and initial load
+    window.addEventListener('popstate', () => {
+      const hash = window.location.hash.substring(1) || 'home';
+      showTab(hash);
+    });
+
+    // On load, check if there is a hash (e.g. user visited panflipstudio.com/#game)
+    document.addEventListener('DOMContentLoaded', () => {
+        handleScrollAnimations();
+        const hash = window.location.hash.substring(1);
+        if(hash) { showTab(hash); }
+    });
 
     function sendMail(e) {
       e.preventDefault();
