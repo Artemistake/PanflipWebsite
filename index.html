@@ -651,13 +651,6 @@
         <img src="BackgroundArt.jpg" alt=""> 
       </div>
 
-      <!-- Floating Sprites Layer (Controlled by JS) -->
-      <div class="floating-elements">
-        <img id="float-1" src="" alt="" class="sprite sprite-1">
-        <img id="float-2" src="" alt="" class="sprite sprite-2">
-        <img id="float-3" src="" alt="" class="sprite sprite-3">
-      </div>
-
       <!-- Hero Content -->
       <div class="home-wrapper">
         <div class="hero-content">
@@ -876,7 +869,7 @@
             </ul>
 
             <h2>Screenshots & Key Art</h2>
-            <a href="[LINK_TO_ZIP]" class="asset-download-btn">Download All Images (.zip)</a>
+            <a href="KeyArts+Screenshots.zip" class="asset-download-btn">Download All Images (.zip)</a>
             
             <div class="gallery-grid" style="margin-bottom: 0;">
               <img src="stackscreen_stacks.png" alt="Screenshot 1">
@@ -888,7 +881,7 @@
             </div>
 
             <h2>Visual Assets</h2>
-            <a href="[LINK_TO_ZIP]" class="asset-download-btn">Download All Visual Assets (.zip)</a>
+            <a href="Visual Assets.zip" class="asset-download-btn">Download All Visual Assets (.zip)</a>
             <div class="gallery-grid" style="margin-bottom: 0;">
               <img src="Illustration (2).png" alt="Illustration 2">
               <img src="Illustration (3).png" alt="Illustration 3">              
@@ -897,7 +890,7 @@
             </div>
 
             <h2>Logos & Icons</h2>
-            <a href="[LINK_TO_ZIP]" class="asset-download-btn">Download All Logos (.zip)</a>
+            <a href="Logos.zip" class="asset-download-btn">Download All Logos (.zip)</a>
 
             <div class="logo-gallery">
               <img src="Logo_V1.png" alt="Game Plain Logo">              
@@ -944,37 +937,6 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    /* =========================================
-       RANDOM SPRITE SYSTEM
-       ========================================= */
-    
-    // 1. EDIT THIS: List your 9 GIF filenames here!
-    const spritePool = [
-      'Portrait-Squelette.gif',
-      'Portrait-Overworld.gif',
-      'placeholder_sprite3.png',
-      // Add your other filenames below (Total 9)
-      'Portrait-Squelette.gif', // Duplicate for demo
-      'Portrait-Overworld.gif', // Duplicate for demo
-      'placeholder_sprite3.png', // Duplicate for demo
-      'Portrait-Squelette.gif', // Duplicate for demo
-      'Portrait-Overworld.gif', // Duplicate for demo
-      'placeholder_sprite3.png'  // Duplicate for demo
-    ];
-
-    function randomizeSprites() {
-      // Shuffle the array
-      const shuffled = [...spritePool].sort(() => 0.5 - Math.random());
-
-      // Assign to the HTML elements
-      const img1 = document.getElementById('float-1');
-      const img2 = document.getElementById('float-2');
-      const img3 = document.getElementById('float-3');
-
-      if (img1) img1.src = shuffled[0];
-      if (img2) img2.src = shuffled[1];
-      if (img3) img3.src = shuffled[2];
-    }
   
     // Navigation & Tabs
     function toggleMenu() {
@@ -988,11 +950,6 @@
       const activeSection = document.getElementById(id);
       if(activeSection) {
         activeSection.classList.add('active');
-      }
-
-      // === TRIGGER RANDOMIZER ON HOME ===
-      if(id === 'home') {
-        randomizeSprites();
       }
 
       // Highlight active nav link (except for home logo)
@@ -1024,9 +981,6 @@
 
     document.addEventListener('DOMContentLoaded', () => {
         handleScrollAnimations();
-        
-        // === TRIGGER RANDOMIZER ON LOAD ===
-        randomizeSprites();
 
         const hash = window.location.hash.substring(1);
         if(hash) { 
